@@ -77,6 +77,7 @@ function Nav() {
         <Tabs.Tab value="/power_bi">Power BI</Tabs.Tab>
         <Tabs.Tab value="/plant">Plant</Tabs.Tab>
         <Tabs.Tab value="/retailer">Retailers</Tabs.Tab>
+        <Tabs.Tab value="/request_intake">Requests</Tabs.Tab>
         {/* <Tabs.Tab value="/chain">Supply Chain</Tabs.Tab> */}
         <Tabs.Tab
           sx={theme => ({
