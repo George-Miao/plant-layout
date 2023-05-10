@@ -1,13 +1,35 @@
 import { MachineProp, mockMachines } from '@data/machine'
-import {
-  Box,
-  Stack,
-  Text,
-  Title,
-  Tooltip,
-  useMantineTheme
-} from '@mantine/core'
-import PlantImg from '../../public/image/plant.svg'
+import { Box, Stack, Title, Tooltip, useMantineTheme } from '@mantine/core'
+import PlantImg from '../../../public/image/plant.svg'
+import Line from '@comp/Line'
+import { GetStaticProps } from 'next'
+import { plants } from '.'
+
+export async function getStaticPaths() {
+  return {
+    paths: plants.map(id => ({
+      params: {
+        id
+      }
+    })),
+    fallback: false // can also be true or 'blocking'
+  }
+}
+
+export const getStaticProps: GetStaticProps<
+  {},
+  { id: string }
+> = async context => {
+  if (!context.params?.id) {
+    return {
+      notFound: true
+    }
+  }
+
+  return {
+    props: {}
+  }
+}
 
 export default function Plant() {
   return (
@@ -16,8 +38,7 @@ export default function Plant() {
       h='100%'
       style={{
         justifyContent: 'center',
-        alignItems: 'center',
-        padding: '1rem'
+        alignItems: 'center'
       }}
     >
       <Title order={1}>Plant Layout Demo</Title>
@@ -42,19 +63,6 @@ const PlantLayout = () => {
         <Machine {...m} key={i} />
       ))}
     </Box>
-  )
-}
-
-export function Line({ k, v }: { k: string; v: string }) {
-  const t = useMantineTheme()
-  return (
-    <Text span color={t.colors.light[t.fn.primaryShade()]}>
-      {k.charAt(0).toUpperCase() + k.slice(1)}
-      {': '}
-      <Text span fw={700}>
-        {v}
-      </Text>
-    </Text>
   )
 }
 

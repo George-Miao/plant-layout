@@ -1,7 +1,7 @@
 import { ProductCategory, productCategories } from '@data/product'
 
 import { Stack } from '@mantine/core'
-import { GetStaticProps, GetStaticPropsResult } from 'next'
+import { GetStaticProps } from 'next'
 
 interface Props {
   id: string

@@ -1,22 +1,22 @@
 import LinkCard from '@comp/LinkCard'
-import { RetailerWithId, retailers } from '@data/retailer'
 import {
   Container,
-  Image,
   SimpleGrid,
   Stack,
   Title,
   useMantineTheme
 } from '@mantine/core'
 
-export default function Retailer() {
+export const plants = ['Florida1', 'Florida2', 'California1', 'California2']
+
+export default function Index() {
   const t = useMantineTheme()
 
   return (
-    <Container my='2rem'>
+    <Container>
       <Stack>
         <Title order={2} mb='lg'>
-          Retailer Dashboards
+          Plant Dashboards
         </Title>
         <SimpleGrid
           breakpoints={[
@@ -25,25 +25,19 @@ export default function Retailer() {
             { minWidth: t.breakpoints.sm, cols: 3 }
           ]}
         >
-          {Object.entries(retailers).map(([k, v]) => {
-            return <RetailerCard key={k} id={k} {...v} />
+          {plants.map(plant => {
+            return (
+              <LinkCard key={plant} href={`/plant/${plant}`}>
+                <Title>
+                  {plant.substring(0, plant.length - 1) +
+                    ' ' +
+                    plant.charAt(plant.length - 1)}
+                </Title>
+              </LinkCard>
+            )
           })}
         </SimpleGrid>
       </Stack>
     </Container>
-  )
-}
-
-function RetailerCard({ id }: RetailerWithId) {
-  return (
-    <LinkCard href={`/retailer/${id}`}>
-      <Image
-        alt={`${id} logo`}
-        src={`/image/logos/${id}.svg`}
-        height={80}
-        fit='contain'
-        p='md'
-      />
-    </LinkCard>
   )
 }

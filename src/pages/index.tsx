@@ -1,7 +1,7 @@
+import LinkCard from '@comp/LinkCard'
 import {
   Box,
   Button,
-  Card,
   Container,
   Group,
   Input,
@@ -40,21 +40,9 @@ export default function Index() {
               ]}
             >
               {new Array(3).fill(0).map((v, i) => (
-                <Card
-                  key={i}
-                  shadow='sm'
-                  padding='lg'
-                  radius='md'
-                  withBorder
-                  component='a'
-                  mih='10em'
-                  sx={{
-                    'transition': 'transform 0.2s ease-in-out',
-                    ':hover': {
-                      transform: 'scale(1.02)'
-                    }
-                  }}
-                ></Card>
+                <LinkCard key={i} href=''>
+                  <Box mih='6rem' />
+                </LinkCard>
               ))}
             </SimpleGrid>
             <Box h='5em' />

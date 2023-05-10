@@ -1,3 +1,4 @@
+import LinkCard from '@comp/LinkCard'
 import { DataSource, dataSources } from '@data/datasoruce'
 import {
   Card,
@@ -37,28 +38,14 @@ export default function DataSources() {
 
 function ProductCard({ id }: DataSource & { id: string }) {
   return (
-    <Link href={`/datasource/${id}`} passHref legacyBehavior>
-      <Card
-        shadow='sm'
-        padding='lg'
-        radius='md'
-        withBorder
-        component='a'
-        sx={{
-          'transition': 'transform 0.2s ease-in-out',
-          ':hover': {
-            transform: 'scale(1.02)'
-          }
-        }}
-      >
-        <Image
-          alt={`${id} logo`}
-          src={`/image/datasource/${id}.png`}
-          height={80}
-          fit='contain'
-          p='md'
-        />
-      </Card>
-    </Link>
+    <LinkCard href={`/datasource/${id}`}>
+      <Image
+        alt={`${id} logo`}
+        src={`/image/datasource/${id}.png`}
+        height={80}
+        fit='contain'
+        p='md'
+      />
+    </LinkCard>
   )
 }

@@ -23,7 +23,8 @@ import {
   Tooltip,
   useMantineTheme
 } from '@mantine/core'
-import { Line } from '@pages/plant'
+import { Line } from '@pages/plant/[id]'
+
 import centroid from '@turf/centroid'
 import { GetStaticProps } from 'next'
 import { useState } from 'react'

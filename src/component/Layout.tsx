@@ -1,13 +1,18 @@
 import {
   Box,
   Burger,
+  Container,
   Drawer,
   Group,
+  Stack,
   Tabs,
+  Text,
+  Title,
   useMantineTheme
 } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import { IconExternalLink } from '@tabler/icons-react'
+import { Url } from 'next/dist/shared/lib/router/router'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -17,9 +22,10 @@ export default function Layout(props: { children: ReactNode }) {
   return (
     <Box mih='100vh' bg='light.0'>
       <Nav />
-      <Box py='lg' px='clamp(1em, 5vw, 4em)'>
+      <Box py='lg' px='clamp(1em, 5vw, 4em)' mih='calc(100vh - 170px)'>
         {props.children}
       </Box>
+      <Footer />
     </Box>
   )
 }
@@ -141,5 +147,54 @@ function Nav() {
         </>
       )}
     </Group>
+  )
+}
+
+function Footer() {
+  let t = useMantineTheme()
+
+  return (
+    <Box component='footer' py='4rem' bg='light.4'>
+      <Container>
+        <SiteMapItem
+          topic='Contact'
+          items={[
+            ['Email', 'mailto:dl-tbgenterpriseanalysticsteam@pepsico.com'],
+            ['Online', 'https://www.tropicanabrandsgroup.com/contactus/']
+          ]}
+        />
+      </Container>
+    </Box>
+  )
+}
+
+function SiteMapItem({
+  topic,
+  items
+}: {
+  topic: string
+  items: [string, Url][]
+}) {
+  return (
+    <Stack spacing='0' c='dark.0'>
+      <Title size={'sm'} order={4} pb='1em'>
+        {topic}
+      </Title>
+      {items.map(([name, url]) => (
+        <Link key={name} href={url} passHref legacyBehavior>
+          <Text
+            component='a'
+            size={'sm'}
+            sx={{
+              '&:hover': {
+                textDecoration: 'underline'
+              }
+            }}
+          >
+            {name}
+          </Text>
+        </Link>
+      ))}
+    </Stack>
   )
 }

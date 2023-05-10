@@ -1,3 +1,4 @@
+import LinkCard from '@comp/LinkCard'
 import { ProductCategory, productCategories } from '@data/product'
 import {
   Card,
@@ -37,28 +38,14 @@ export default function Retailer() {
 
 function ProductCard({ id }: ProductCategory & { id: string }) {
   return (
-    <Link href={`/product/${id}`} passHref legacyBehavior>
-      <Card
-        shadow='sm'
-        padding='lg'
-        radius='md'
-        withBorder
-        component='a'
-        sx={{
-          'transition': 'transform 0.2s ease-in-out',
-          ':hover': {
-            transform: 'scale(1.02)'
-          }
-        }}
-      >
-        <Image
-          alt={`${id} logo`}
-          src={`/image/product/${id}.png`}
-          height={80}
-          fit='contain'
-          p='md'
-        />
-      </Card>
-    </Link>
+    <LinkCard href={`/product/${id}`}>
+      <Image
+        alt={`${id} logo`}
+        src={`/image/product/${id}.png`}
+        height={80}
+        fit='contain'
+        p='md'
+      />
+    </LinkCard>
   )
 }
