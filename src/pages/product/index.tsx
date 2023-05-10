@@ -1,7 +1,6 @@
 import LinkCard from '@comp/LinkCard'
 import { ProductCategory, productCategories } from '@data/product'
 import {
-  Card,
   Container,
   Image,
   SimpleGrid,
@@ -9,7 +8,6 @@ import {
   Title,
   useMantineTheme
 } from '@mantine/core'
-import Link from 'next/link'
 
 export default function Retailer() {
   const t = useMantineTheme()

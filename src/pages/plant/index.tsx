@@ -13,7 +13,7 @@ export default function Index() {
   const t = useMantineTheme()
 
   return (
-    <Container>
+    <Container my='2rem'>
       <Stack>
         <Title order={2} mb='lg'>
           Plant Dashboards
